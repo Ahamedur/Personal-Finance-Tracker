@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="533.0" prefWidth="945.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="financeTracker.MainApplicationController">
+   <children>
+      <TabPane fx:id="mainTabPane" prefHeight="527.0" prefWidth="834.0" style="-fx-background-color: ADD8E6;" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Expenses Tracking">
+               <content>
+                  <AnchorPane prefHeight="890.0" prefWidth="1085.0">
+                     <TableView fx:id="expensesTable" layoutX="15" layoutY="110" prefHeight="200" prefWidth="570">
+                        <columns>
+                           <TableColumn fx:id="dateColumn" prefWidth="174.0" text="Date">
+    <cellValueFactory>
+        <PropertyValueFactory property="date" />
+    </cellValueFactory>
+</TableColumn>
+<TableColumn fx:id="categoryColumn" prefWidth="173.0" text="Category">
+    <cellValueFactory>
+        <PropertyValueFactory property="category" />
+    </cellValueFactory>
+</TableColumn>
+<TableColumn fx:id="amountColumn" prefWidth="194.0" text="Amount">
+    <cellValueFactory>
+        <PropertyValueFactory property="amount" />
+    </cellValueFactory>
+</TableColumn>
+
+                        </columns>
+                     </TableView>
+                     <TextField fx:id="categoryField" layoutX="15" layoutY="15" prefWidth="180" promptText="Category" />
+                     <TextField fx:id="amountField" layoutX="205" layoutY="15" prefWidth="180" promptText="Amount" />
+                     <DatePicker fx:id="datePicker" layoutX="395" layoutY="15" prefWidth="190" />
+                     <Button fx:id="addExpenseButton" layoutX="589.0" layoutY="15.0" onAction="#handleAddExpense" text="Add Expense">
+                        <font>
+                           <Font name="System Bold" size="20.0" />
+                        </font></Button>
+                     <Button fx:id="removeExpenseButton" layoutX="589.0" layoutY="111.0" mnemonicParsing="false" onAction="#handleRemoveExpense" text="Remove Expense">
+                        <font>
+                           <Font name="System Bold" size="20.0" />
+                        </font></Button>
+                     <Label layoutX="300.0" layoutY="879.0" prefHeight="62.0" prefWidth="435.0" text="My Personal Finance Tracker">
+                        <font>
+                           <Font name="Stencil" size="27.0" />
+                        </font>
+                     </Label>
+                     <Button fx:id="ShowChartButton" layoutX="620.0" layoutY="188.0" mnemonicParsing="false" onAction="#handleShowChart1" text="Show Chart">
+                        <font>
+                           <Font name="System Bold" size="20.0" />
+                        </font></Button>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Budgets">
+    <content>
+        <AnchorPane>
+            <TableView fx:id="budgetsTable" layoutX="15" layoutY="100" prefHeight="200" prefWidth="570">
+                <columns>
+                    <TableColumn fx:id="budgetCategoryColumn" prefWidth="114.0" text="Category">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="category" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="allocatedAmountColumn" prefWidth="180.0" text="Allocated Amount">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="allocatedAmount" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="spentAmountColumn" prefWidth="243.0" text="Spent Amount">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="spentAmount" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+            <TextField fx:id="budgetCategoryField" layoutX="15" layoutY="15" prefWidth="180" promptText="Category" />
+            <TextField fx:id="allocatedAmountField" layoutX="205" layoutY="15" prefWidth="180" promptText="Allocated Amount" />
+            <Button fx:id="addBudgetButton" layoutX="395" layoutY="15" onAction="#handleAddBudget" text="Add Budget">
+                        <font>
+                           <Font name="System Bold" size="20.0" />
+                        </font></Button>
+                     <Label layoutX="312.0" layoutY="879.0" prefHeight="62.0" prefWidth="435.0" text="My Personal Finance Tracker">
+                        <font>
+                           <Font name="Stencil" size="27.0" />
+                        </font>
+                     </Label>
+                     <Button fx:id="ShowChartButton" layoutX="603.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleShowBudgetChart" text="Show Chart">
+                        <font>
+                           <Font name="System Bold" size="20.0" />
+                        </font>
+                     </Button>
+        </AnchorPane>
+    </content>
+</Tab>
+
+            <Tab text="Financial Goals">
+               <content>
+                  <AnchorPane>
+            <TableView fx:id="goalsTable" layoutX="15" layoutY="100" prefHeight="200" prefWidth="570">
+                <columns>
+                <TableColumn fx:id="descriptionColumn" prefWidth="177.0" text="Description">
+    <cellValueFactory>
+        <PropertyValueFactory property="description" />
+    </cellValueFactory>
+</TableColumn>
+<TableColumn fx:id="targetAmountColumn" prefWidth="184.0" text="Target Amount">
+    <cellValueFactory>
+        <PropertyValueFactory property="targetAmount" />
+    </cellValueFactory>
+</TableColumn>
+<TableColumn fx:id="currentAmountColumn" prefWidth="208.0" text="Current Amount">
+    <cellValueFactory>
+        <PropertyValueFactory property="currentAmount" />
+    </cellValueFactory>
+</TableColumn>
+    
+                </columns>
+            </TableView>
+            <TextField fx:id="goalDescriptionField" layoutX="15" layoutY="15" prefWidth="200" promptText="Description" />
+            <TextField fx:id="goalTargetAmountField" layoutX="225" layoutY="15" prefWidth="200" promptText="Target Amount" />
+            <Button fx:id="addGoalButton" layoutX="435" layoutY="15" onAction="#handleAddGoal" text="Add Goal">
+                        <font>
+                           <Font name="System Bold" size="20.0" />
+                        </font></Button>
+            <!-- Add Contribution Button -->
+            <Button fx:id="updateGoalButton" layoutX="435" layoutY="50" onAction="#handleAddContributionToGoal" text="Add Contribution">
+                        <font>
+                           <Font name="System Bold" size="20.0" />
+                        </font></Button>
+                     <Label layoutX="309.0" layoutY="873.0" prefHeight="62.0" prefWidth="435.0" text="My Personal Finance Tracker">
+                        <font>
+                           <Font name="Stencil" size="27.0" />
+                        </font>
+                     </Label>
+                     <Button fx:id="ShowGraphButton" layoutX="595.0" layoutY="168.0" mnemonicParsing="false" onAction="#handleShowGraph" text="Show Graph">
+                        <font>
+                           <Font name="System Bold" size="20.0" />
+                        </font>
+                     </Button>
+        </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Investment Tracking">
+    <content>
+        <AnchorPane prefHeight="479.0" prefWidth="950.0">
+            <TableView fx:id="investmentsTable" layoutX="15" layoutY="100" prefHeight="200" prefWidth="570">
+                <columns>
+                    <TableColumn fx:id="nameColumn" prefWidth="110.0" text="Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="name" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="amountInvestedColumn" prefWidth="176.0" text="Amount Invested">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="amountInvested" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="currentValueColumn" prefWidth="155.0" text="Current Value">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="currentValue" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="investmentCategoryColumn" prefWidth="109.0" text="Category">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="category" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+            <TextField fx:id="investmentNameField" layoutX="15" layoutY="15" prefWidth="140" promptText="Name" />
+            <TextField fx:id="amountInvestedField" layoutX="160" layoutY="15" prefWidth="140" promptText="Amount Invested" />
+            <TextField fx:id="investmentCurrentValueField" layoutX="305" layoutY="15" prefWidth="140" promptText="Current Value" />
+            <TextField fx:id="investmentCategoryField" layoutX="450" layoutY="15" prefWidth="135" promptText="Category" />
+            <Button fx:id="addInvestmentButton" layoutX="598.0" layoutY="15.0" onAction="#handleAddInvestment" text="Add Investment">
+                        <font>
+                           <Font name="System Bold" size="20.0" />
+                        </font></Button>
+
+            <!-- Pie Chart for Asset Allocation -->
+            <PieChart fx:id="assetAllocationChart" layoutX="590" layoutY="100" prefHeight="200" prefWidth="200" />
+                     <Button fx:id="showChartButton" layoutX="617.0" layoutY="67.0" onAction="#handleShowChart" text="Show Chart">
+                        <font>
+                           <Font name="System Bold" size="20.0" />
+                        </font></Button>
+                     <Label layoutX="331.0" layoutY="873.0" prefHeight="62.0" prefWidth="435.0" text="My Personal Finance Tracker">
+                        <font>
+                           <Font name="Stencil" size="27.0" />
+                        </font>
+                     </Label>
+
+        </AnchorPane>
+    </content>
+</Tab>
+<Tab text="Receipts and Bills Organizer">
+    <content>
+        <fx:include source="ReceiptsTab.fxml" />
+    </content>
+</Tab>
+<Tab fx:id="billsTab" text="Bill Management" onSelectionChanged="#handleBillManagementTabSelected">
+    <content>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="billsTable" layoutX="14.0" layoutY="60.0" prefHeight="200.0" prefWidth="805.0">
+                <columns>
+                    <TableColumn fx:id="billNameColumn" prefWidth="200.0" text="Bill Name"/>
+                    <TableColumn fx:id="amountDueColumn" prefWidth="150.0" text="Amount Due"/>
+                    <TableColumn fx:id="dueDateColumn" prefWidth="150.0" text="Due Date"/>
+                    <TableColumn fx:id="isPaidColumn" prefWidth="100.0" text="Paid"/>
+                </columns>
+            </TableView>
+            <TextField fx:id="billNameField" layoutX="14.0" layoutY="14.0" prefWidth="200.0" promptText="Enter bill name"/>
+            <TextField fx:id="amountDueField" layoutX="224.0" layoutY="14.0" prefWidth="150.0" promptText="Amount Due"/>
+            <DatePicker fx:id="dueDatePicker" layoutX="384.0" layoutY="14.0" prefWidth="150.0"/>
+            <Button fx:id="addBillButton" layoutX="544.0" layoutY="14.0" text="Add Bill" onAction="#handleAddBill"/>
+            <Button fx:id="deleteBillButton" layoutX="684.0" layoutY="14.0" text="Delete Bill" onAction="#handleDeleteBill"/>
+        </AnchorPane>
+    </content>
+</Tab>
+
+         </tabs>
+      </TabPane>
+      <Button fx:id="logoutButton" layoutX="835.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleLogout" text="Logout">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Button>
+         
+         <Hyperlink fx:id="linkToBank" layoutX="834.0" layoutY="414.0" onAction="#handleLinkToBank" text="Link to Bank">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Hyperlink>
+      <Button fx:id="chatButton" layoutX="835.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleChatButton" text="Chat with Me">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Button>
+      <ImageView fitHeight="150.0" fitWidth="130.0" layoutX="839.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+    <image>
+        <Image url="/financeTracker/chatbot.jpg" />
+    </image>
+</ImageView>
+
+   </children>
+</AnchorPane>
